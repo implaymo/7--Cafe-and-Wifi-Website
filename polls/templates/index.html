@@ -33,9 +33,9 @@
       <div class="px-4 pt-5 my-5 text-center border-bottom">
           <!-- Your heroes HTML code goes here -->
           <div class="px-4 pt-5 my-5 text-center border-bottom">
-              <h1 class="display-4 fw-bold text-body-emphasis">Centered screenshot</h1>
+              <h1 class="display-4 fw-bold text-body-emphasis">{{ cafe.name }}</h1>
               <div class="col-lg-6 mx-auto">
-                  <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+                  <p class="lead mb-4">{{ cafe.location }}</p>
                   <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
                       <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Primary button</button>
                       <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
@@ -63,13 +63,14 @@
                   </a>
                   {% for cafe in all_cafes %}
                   <div class="list-group list-group-flush border-bottom scrollarea">
-                      <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+                      <a href="{% url 'get_cafe_info' %}?cafe_id={{ cafe.id }}" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
                           <div class="d-flex w-100 align-items-center justify-content-between">
                               <strong class="mb-1">{{ cafe.name }}</strong>
                           </div>
                           <div class="col-10 mb-1 small">{{ cafe.location }}</div>
                       </a>
-                      {% endfor %}
+                  </div>
+                  {% endfor %}   
                   </div>
               </div>
           </div>

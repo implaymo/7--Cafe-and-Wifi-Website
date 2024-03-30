@@ -64,6 +64,73 @@
                       <img src="{{ cafe.img_url }}" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="300" height="300" loading="lazy">
                   </div>
               </div>
+              <div class="row g-5">
+                <div class="col-md-6">
+                  <h2 class="text-body-emphasis">Features</h2>
+                  <ul class="list-unstyled ps-0">
+                    <li>
+                      <p class="icon-link mb-1">Toilet: {{ cafe.has_toilet }}</p>
+                      </p>
+                    </li>
+                    <li>
+                        <p class="icon-link mb-1">Wifi: {{ cafe.has_wifi }}</p>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="icon-link mb-1">Sockets: {{ cafe.has_sockets }}</p>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="icon-link mb-1">Can take calls: {{ cafe.can_take_calls }}</p>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="icon-link mb-1">Coffee price: {{ cafe.coffee_price }}$</p>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="icon-link mb-1">Total seats: {{ cafe.seats }}</p>
+                        </p>
+                    </li>
+                  </ul>
+                </div>
+          
+                <div class="col-md-6">
+                  <h2 class="text-body-emphasis">Location</h2>
+                  <ul class="list-unstyled ps-0">
+                    <li>
+                      <a class="icon-link mb-1" href="/docs/5.3/getting-started/introduction/">
+                        <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
+                        Bootstrap quick start guide
+                      </a>
+                    </li>
+                    <li>
+                      <a class="icon-link mb-1" href="/docs/5.3/getting-started/webpack/">
+                        <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
+                        Bootstrap Webpack guide
+                      </a>
+                    </li>
+                    <li>
+                      <a class="icon-link mb-1" href="/docs/5.3/getting-started/parcel/">
+                        <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
+                        Bootstrap Parcel guide
+                      </a>
+                    </li>
+                    <li>
+                      <a class="icon-link mb-1" href="/docs/5.3/getting-started/vite/">
+                        <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
+                        Bootstrap Vite guide
+                      </a>
+                    </li>
+                    <li>
+                      <a class="icon-link mb-1" href="/docs/5.3/getting-started/contribute/">
+                        <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
+                        Contributing to Bootstrap
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             {% endif %}
           </div>
       </div>

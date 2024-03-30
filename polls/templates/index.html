@@ -30,7 +30,7 @@
     </div>
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+        <li><a href="{% url 'index' %}" class="nav-link px-2 link-secondary">Home</a></li>
         <li><a href="#" class="nav-link px-2">Features</a></li>
         <li><a href="#" class="nav-link px-2">Pricing</a></li>
         <li><a href="#" class="nav-link px-2">FAQs</a></li>
@@ -50,7 +50,7 @@
           <!-- Your heroes HTML code goes here -->
           <div class="px-4 pt-5 my-5 text-center border-bottom">
             {% if cafe is None %}
-            <h1 class="display-4 fw-bold text-body-emphasis">Welcome to Cafe&Wifi</h1>
+            <h1 class="display-4 fw-bold text-body-emphasis">Welcome to Cafe&Wifi </h1>
             <p class="lead mb-4">Click on the cafes on the left to find your perfect location!</p>
             {% else %}
               <h1 class="display-4 fw-bold text-body-emphasis">{{ cafe.name }}</h1>

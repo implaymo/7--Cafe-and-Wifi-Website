@@ -1,6 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Cafe
 from .forms import RegisterForm, LoginForm
+
+
 
 def index(request): 
     all_cafes = Cafe.objects.all()
@@ -17,8 +19,16 @@ def sign_in(request):
     return render(request, "login.html", {'form': form} )
 
 def register(request):
-    form = RegisterForm()
-    return render(request, "register.html", {'form': form} )
+    form = RegisterForm(request.POST)
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+        else:
+            error_message = "Something went wrong. Try again"
+            return render(request, "register.html", {'form': form, "error_message": error_message})
+    else:
+        return render(request, "register.html", {'form': form})
 
 def logout(request):
     pass

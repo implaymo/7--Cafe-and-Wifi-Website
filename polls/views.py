@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Cafe
 from .forms import RegisterForm, LoginForm
+from django.contrib.auth import authenticate, login
 
 
 
@@ -16,7 +17,18 @@ def get_cafe_info(request):
 
 def sign_in(request):
     form = LoginForm()
-    return render(request, "login.html", {'form': form} )
+    if request.method == "POST":
+        if form.is_valid():
+            username = request.POST["username"]
+            password = request.POST["password"]
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                redirect("index")
+            else:
+                error_message = "Something was wrong. Try again"
+                return render(request, "login.html", {'form': form, "error_message": error_message})
+    return render(request, "login.html", {'form': form})
 
 def register(request):
     form = RegisterForm(request.POST)

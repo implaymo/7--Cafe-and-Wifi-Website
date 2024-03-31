@@ -69,20 +69,40 @@
                   <h2 class="text-body-emphasis">Features</h2>
                   <ul class="list-unstyled ps-0">
                     <li>
-                      <p class="icon-link mb-1">▪️ Toilet: {{ cafe.has_toilet }}</p>
+                      {% if cafe.has_toilet is True %}
+                      <p class="icon-link mb-1">▪️ Toilet: Yes</p>
                       </p>
+                      {% else %}
+                      <p class="icon-link mb-1">▪️ Toilet: No</p>
+                    </p>
+                    {% endif %}
                     </li>
                     <li>
-                        <p class="icon-link mb-1">▪️ Wifi: {{ cafe.has_wifi }}</p>
-                        </p>
+                      {% if cafe.has_wifi is True %}
+                      <p class="icon-link mb-1">▪️ Wifi: Yes</p>
+                      </p>
+                      {% else %}
+                      <p class="icon-link mb-1">▪️ Wifi: No</p>
+                    </p>
+                    {% endif %}
                     </li>
                     <li>
-                        <p class="icon-link mb-1">▪️ Sockets: {{ cafe.has_sockets }}</p>
-                        </p>
+                      {% if cafe.has_sockets is True %}
+                      <p class="icon-link mb-1">▪️ Sockets: Yes</p>
+                      </p>
+                      {% else %}
+                      <p class="icon-link mb-1">▪️ Sockets: No</p>
+                    </p>
+                    {% endif %}
                     </li>
                     <li>
-                        <p class="icon-link mb-1">▪️ Can take calls: {{ cafe.can_take_calls }}</p>
-                        </p>
+                      {% if cafe.can_take_calls is True %}
+                      <p class="icon-link mb-1">▪️ Can take calls: Yes</p>
+                      </p>
+                      {% else %}
+                      <p class="icon-link mb-1">▪️ Can take calls: No</p>
+                    </p>
+                    {% endif %}
                     </li>
                     <li>
                         <p class="icon-link mb-1">▪️ Coffee price: {{ cafe.coffee_price }}$</p>
@@ -99,33 +119,9 @@
                   <h2 class="text-body-emphasis">Location</h2>
                   <ul class="list-unstyled ps-0">
                     <li>
-                      <a class="icon-link mb-1" href="/docs/5.3/getting-started/introduction/">
+                      <a class="icon-link mb-1" href="{{ cafe.map_url}}">
                         <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
-                        Bootstrap quick start guide
-                      </a>
-                    </li>
-                    <li>
-                      <a class="icon-link mb-1" href="/docs/5.3/getting-started/webpack/">
-                        <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
-                        Bootstrap Webpack guide
-                      </a>
-                    </li>
-                    <li>
-                      <a class="icon-link mb-1" href="/docs/5.3/getting-started/parcel/">
-                        <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
-                        Bootstrap Parcel guide
-                      </a>
-                    </li>
-                    <li>
-                      <a class="icon-link mb-1" href="/docs/5.3/getting-started/vite/">
-                        <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
-                        Bootstrap Vite guide
-                      </a>
-                    </li>
-                    <li>
-                      <a class="icon-link mb-1" href="/docs/5.3/getting-started/contribute/">
-                        <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
-                        Contributing to Bootstrap
+                        {{cafe.name}} Map location
                       </a>
                     </li>
                   </ul>

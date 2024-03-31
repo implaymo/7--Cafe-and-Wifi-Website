@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Cafe
-
+from .forms import RegisterForm, LoginForm
 
 def index(request): 
     all_cafes = Cafe.objects.all()
@@ -12,11 +12,13 @@ def get_cafe_info(request):
     cafe = get_object_or_404(Cafe, id=cafe_id)
     return render(request, 'index.html', {'all_cafes': all_cafes, 'cafe': cafe})
 
-def login(request):
-    pass
+def sign_in(request):
+    form = LoginForm()
+    return render(request, "login.html", {'form': form} )
 
-def sign_up(request):
-    pass
+def register(request):
+    form = RegisterForm()
+    return render(request, "register.html", {'form': form} )
 
 def logout(request):
     pass

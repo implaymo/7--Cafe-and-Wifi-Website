@@ -11,4 +11,5 @@ class Cafe(models.Model):
     has_sockets = models.BooleanField(default=False)
     can_take_calls = models.BooleanField(default=False)
     coffee_price = models.CharField(max_length=250, null=True)
+    
 

@@ -11,3 +11,12 @@ def get_cafe_info(request):
     cafe_id = request.GET.get('cafe_id')
     cafe = get_object_or_404(Cafe, id=cafe_id)
     return render(request, 'index.html', {'all_cafes': all_cafes, 'cafe': cafe})
+
+def login(request):
+    pass
+
+def sign_up(request):
+    pass
+
+def logout(request):
+    pass

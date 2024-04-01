@@ -14,3 +14,17 @@ class RegisterForm(UserCreationForm):
 class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
+    
+    
+    
+class AddCafe(forms.Form):
+    name = forms.CharField()
+    map_url = forms.CharField()
+    img_url = forms.CharField()
+    location = forms.CharField()
+    seats = forms.CharField()
+    has_toilet = forms.BooleanField()
+    has_wifi = forms.BooleanField()
+    has_sockets = forms.BooleanField()
+    can_take_calls = forms.BooleanField()
+    coffee_price = forms.CharField()

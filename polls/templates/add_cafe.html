@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Cafe</title>
+</head>
+<body>
+    <h1>Add New Cafe</h1>
+    <form action="{% url 'add_new_cafe' %}" method="post">
+        {% csrf_token %}
+        {% if user.is_anonymous %}
+            {{ error_message }}
+        {% endif %}
+        {{ form.as_p }}
+        <button type="submit">Add</button>
+    </form>
+</body>

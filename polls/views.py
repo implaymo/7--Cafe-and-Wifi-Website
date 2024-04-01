@@ -61,6 +61,7 @@ def add_new_cafe(request):
             has_sockets = form.cleaned_data["has_sockets"]
             can_take_calls = form.cleaned_data["can_take_calls"]
             coffee_price = form.cleaned_data["coffee_price"]
+            
             cafe_instance = Cafe(
                 name=name,
                 map_url=map_url,
@@ -80,3 +81,4 @@ def add_new_cafe(request):
             return render(request, "add_cafe.html", {"form": form, "error_message": error_message})
     else:
         return render(request, "add_cafe.html", {"form": form})
+

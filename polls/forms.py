@@ -28,3 +28,4 @@ class AddCafe(forms.Form):
     has_sockets = forms.BooleanField()
     can_take_calls = forms.BooleanField()
     coffee_price = forms.CharField()
+    

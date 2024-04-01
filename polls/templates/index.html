@@ -34,9 +34,6 @@
         {% if user.is_authenticated %}
         <li><a href="{% url 'add_new_cafe' %}" class="nav-link px-2">Add Cafe</a></li>
         {% endif %}
-        {% if user.is_superuser %}
-        <li><a href="" class="nav-link px-2">Edit Cafe</a></li>
-        {% endif %}
 
 
     </ul>
@@ -150,9 +147,13 @@
                     <div class="d-flex w-100 align-items-center justify-content-between">
                         <strong class="mb-1">{{ cafe.name }}</strong>
                     </div>
-                    <div class="col-10 mb-1 small">{{ cafe.location }}</div>
+                    <div class="col-10 mb-1 small">{{ cafe.location }} </div>
                 </a>
             </div>
+            {% if user.is_superuser %}
+                      <a href="" class="nav-link px-2">Edit Cafe</a></li>
+                      <a href="" class="nav-link px-2">Delete Cafe</a></li>
+                    {% endif %}
             {% endfor %}
         </div>
     </div>

@@ -19,6 +19,29 @@
             margin-left: 330px; /* Set margin to push heroes column to the right of the sidebar */
             padding: 50px; /* Add padding for spacing */
         }
+        
+        .btn-group {
+          display: inline-flex;
+        }
+
+        .btn-sm {
+          padding: 0.25rem 0.5rem;
+          font-size: 0.875rem;
+          line-height: 1.5;
+        }
+
+        .btn-info {
+          color: #fff;
+          background-color: #17a2b8;
+          border-color: #17a2b8;
+        }
+
+        .btn-danger {
+          color: #fff;
+          background-color: #dc3545;
+          border-color: #dc3545;
+        }
+
     </style>
 </head>
 <body>
@@ -151,9 +174,12 @@
                 </a>
             </div>
             {% if user.is_superuser %}
-                      <a href="" class="nav-link px-2">Edit Cafe</a></li>
-                      <a href="" class="nav-link px-2">Delete Cafe</a></li>
-                    {% endif %}
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <a href="" class="nav-link px-2"><button type="button" class="btn btn-sm btn-info">Edit</button></a>
+              <a href="" class="nav-link px-2"><button type="button" class="btn btn-sm btn-danger">Delete</button></a>
+            </div>            
+            
+            {% endif %}
             {% endfor %}
         </div>
     </div>

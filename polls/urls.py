@@ -8,5 +8,7 @@ urlpatterns = [
     path("sign_in/", views.sign_in, name="sign_in"),
     path("register/", views.register, name="register"),
     path("logout_view/", views.logout_view, name="logout_view"),
-    path("add_new_cafe/", views.add_new_cafe, name="add_new_cafe") 
+    path("add_new_cafe/", views.add_new_cafe, name="add_new_cafe"),
+    path("edit_cafe_selected/", views.edit_cafe_selected, name="edit_cafe_selected"),
+    path('apply_cafe_changes/', views.apply_cafe_changes, name="apply_cafe_changes") 
 ]

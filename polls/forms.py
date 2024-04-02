@@ -29,3 +29,14 @@ class AddCafe(forms.Form):
     can_take_calls = forms.BooleanField()
     coffee_price = forms.CharField()
     
+class EditCafe(forms.Form):
+    name = forms.CharField()
+    map_url = forms.CharField()
+    img_url = forms.CharField()
+    location = forms.CharField()
+    seats = forms.CharField()
+    has_toilet = forms.BooleanField()
+    has_wifi = forms.BooleanField()
+    has_sockets = forms.BooleanField()
+    can_take_calls = forms.BooleanField()
+    coffee_price = forms.CharField()

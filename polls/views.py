@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Cafe
-from .forms import RegisterForm, LoginForm, AddCafe
+from .forms import RegisterForm, LoginForm, AddCafe, EditCafe
 from django.contrib.auth import authenticate, login, logout
 
 
@@ -82,3 +82,35 @@ def add_new_cafe(request):
     else:
         return render(request, "add_cafe.html", {"form": form})
 
+def edit_cafe_selected(request):
+    cafe_id = request.GET.get('cafe_id')
+    cafe = get_object_or_404(Cafe, id=cafe_id)
+    initial_data = {
+        'name': cafe.name,
+        'map_url': cafe.map_url,
+        'img_url': cafe.img_url,
+        'location': cafe.location,
+        'seats': cafe.seats,
+        'has_toilet': cafe.has_toilet,
+        'has_wifi': cafe.has_wifi,
+        'has_sockets': cafe.has_sockets,
+        'can_take_calls': cafe.can_take_calls,
+        'coffee_price': cafe.coffee_price
+    }
+
+    form = EditCafe(initial=initial_data)
+    return render(request, "edit_cafe.html", {"form": form})    
+
+def apply_cafe_changes(request, cafe_id):
+    cafe_id = Cafe.objects.get('cafe_id')
+    print(f"THIS IS THE CAFE_ID {cafe_id}")
+    cafe = get_object_or_404(Cafe, id=cafe_id)
+    if request.method == "POST":
+        form = Cafe(request.POST, instance=cafe)
+        if form.is_valid():  
+            cafe.save()
+            return redirect('index')
+    else:
+        form = EditCafe(instance=cafe)
+    
+    return render(request, "edit_cafe.html", {"form": form})

@@ -175,7 +175,7 @@
             </div>
             {% if user.is_superuser %}
             <div class="btn-group" role="group" aria-label="Basic example">
-              <a href="" class="nav-link px-2"><button type="button" class="btn btn-sm btn-info">Edit</button></a>
+              <a href="{% url 'edit_cafe_selected' %}?cafe_id={{ cafe.id }}" class="nav-link px-2"><button type="button" class="btn btn-sm btn-info">Edit</button></a>
               <a href="" class="nav-link px-2"><button type="button" class="btn btn-sm btn-danger">Delete</button></a>
             </div>            
             

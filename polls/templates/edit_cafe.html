@@ -7,8 +7,9 @@
 </head>
 <body>
     <h1>Edit Cafe</h1>
-    <form action="{% url 'update_cafe' %}" method="post">
+    <form action="{% url 'edit_cafe_selected' %}" method="post">
         {% csrf_token %}
+        <input type="hidden" name="cafe_id" value="{{ cafe_id }}">
         {% if user.is_anonymous %}
             {{ error_message }}
         {% endif %}

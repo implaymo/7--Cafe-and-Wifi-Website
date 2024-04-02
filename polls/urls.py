@@ -10,5 +10,4 @@ urlpatterns = [
     path("logout_view/", views.logout_view, name="logout_view"),
     path("add_new_cafe/", views.add_new_cafe, name="add_new_cafe"),
     path("edit_cafe_selected/", views.edit_cafe_selected, name="edit_cafe_selected"),
-    path('update_cafe/', views.update_cafe, name="update_cafe") 
 ]

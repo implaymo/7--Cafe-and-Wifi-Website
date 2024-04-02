@@ -61,16 +61,20 @@ def add_new_cafe(request):
         return render(request, "add_cafe.html", {"form": form})
 
 def edit_cafe_selected(request):
-    cafe_id = request.GET.get('cafe_id')
-    cafe = get_object_or_404(Cafe, id=cafe_id)
-    form = EditCafe(instance=cafe)
-    return render(request, "edit_cafe.html", {"form": form})    
-
-def update_cafe(request):
-    if request.method == "POST":
-        cafe_id = request.POST.get('cafe_id')  
+    if request.method == 'POST':
+        cafe_id = request.POST.get('cafe_id')
         cafe = get_object_or_404(Cafe, id=cafe_id)
-        edited_cafe = Cafe(request.POST, instance=cafe)
-        edited_cafe.save()
-        return redirect('index')
-  
+        form = EditCafe(request.POST, instance=cafe)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        cafe_id = request.GET.get('cafe_id')
+        cafe = get_object_or_404(Cafe, id=cafe_id)
+        form = EditCafe(instance=cafe)
+    
+    return render(request, "edit_cafe.html", {"form": form, "cafe_id": cafe_id})
+    
+
+
+    

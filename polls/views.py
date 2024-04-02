@@ -63,20 +63,7 @@ def add_new_cafe(request):
 def edit_cafe_selected(request):
     cafe_id = request.GET.get('cafe_id')
     cafe = get_object_or_404(Cafe, id=cafe_id)
-    initial_data = {
-        'name': cafe.name,
-        'map_url': cafe.map_url,
-        'img_url': cafe.img_url,
-        'location': cafe.location,
-        'seats': cafe.seats,
-        'has_toilet': cafe.has_toilet,
-        'has_wifi': cafe.has_wifi,
-        'has_sockets': cafe.has_sockets,
-        'can_take_calls': cafe.can_take_calls,
-        'coffee_price': cafe.coffee_price
-    }
-
-    form = EditCafe(initial=initial_data)
+    form = EditCafe(instance=cafe)
     return render(request, "edit_cafe.html", {"form": form})    
 
 def update_cafe(request):

@@ -75,6 +75,18 @@ def edit_cafe_selected(request):
     
     return render(request, "edit_cafe.html", {"form": form, "cafe_id": cafe_id})
     
-
+def delete_cafe(request):
+    if request.GET.get('cafe_id'):
+        cafe_id = request.GET.get('cafe_id')
+        print(f"CAFE {cafe_id}")
+        cafe = cafe = get_object_or_404(Cafe, id=cafe_id)
+        cafe.delete()
+        return redirect("index")
+    else:
+        cafe_id = request.POST.get('cafe_id')
+        cafe = get_object_or_404(Cafe, id=cafe_id)
+        cafe.delete()
+        
+    return render(request, "index.html", {"cafe_id": cafe_id})
 
     

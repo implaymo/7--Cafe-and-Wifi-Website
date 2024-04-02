@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Edit Cafe</h1>
-    <form action="{% url 'apply_cafe_changes' %}" method="post">
+    <form action="{% url 'update_cafe' %}" method="post">
         {% csrf_token %}
         {% if user.is_anonymous %}
             {{ error_message }}

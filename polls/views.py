@@ -48,38 +48,16 @@ def logout_view(request):
     return redirect("index")
 
 def add_new_cafe(request):
-    form = AddCafe(request.POST)
     if request.method == "POST":
+        form = AddCafe(request.POST)
         if form.is_valid():
-            name = form.cleaned_data["name"]
-            map_url = form.cleaned_data["map_url"]
-            img_url = form.cleaned_data["img_url"]
-            location = form.cleaned_data["location"]
-            seats = form.cleaned_data["seats"]
-            has_toilet = form.cleaned_data["has_toilet"]
-            has_wifi = form.cleaned_data["has_wifi"]
-            has_sockets = form.cleaned_data["has_sockets"]
-            can_take_calls = form.cleaned_data["can_take_calls"]
-            coffee_price = form.cleaned_data["coffee_price"]
-            
-            cafe_instance = Cafe(
-                name=name,
-                map_url=map_url,
-                img_url=img_url,
-                location=location,
-                seats=seats,
-                has_toilet=has_toilet,
-                has_wifi=has_wifi,
-                has_sockets=has_sockets,
-                can_take_calls=can_take_calls,
-                coffee_price=coffee_price
-            )
-            cafe_instance.save()
+            form.save()
             return redirect("index")
         else:
             error_message = "Something went wrong. Try again"
             return render(request, "add_cafe.html", {"form": form, "error_message": error_message})
     else:
+        form = AddCafe()
         return render(request, "add_cafe.html", {"form": form})
 
 def edit_cafe_selected(request):
@@ -101,16 +79,11 @@ def edit_cafe_selected(request):
     form = EditCafe(initial=initial_data)
     return render(request, "edit_cafe.html", {"form": form})    
 
-def apply_cafe_changes(request, cafe_id):
-    cafe_id = Cafe.objects.get('cafe_id')
-    print(f"THIS IS THE CAFE_ID {cafe_id}")
-    cafe = get_object_or_404(Cafe, id=cafe_id)
+def update_cafe(request):
     if request.method == "POST":
-        form = Cafe(request.POST, instance=cafe)
-        if form.is_valid():  
-            cafe.save()
-            return redirect('index')
-    else:
-        form = EditCafe(instance=cafe)
-    
-    return render(request, "edit_cafe.html", {"form": form})
+        cafe_id = request.POST.get('cafe_id')  
+        cafe = get_object_or_404(Cafe, id=cafe_id)
+        edited_cafe = Cafe(request.POST, instance=cafe)
+        edited_cafe.save()
+        return redirect('index')
+  

@@ -1,6 +1,7 @@
 from django import forms 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Cafe 
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -17,7 +18,7 @@ class LoginForm(forms.Form):
     
     
     
-class AddCafe(forms.Form):
+class AddCafe(forms.ModelForm):
     name = forms.CharField()
     map_url = forms.CharField()
     img_url = forms.CharField()
@@ -29,7 +30,11 @@ class AddCafe(forms.Form):
     can_take_calls = forms.BooleanField()
     coffee_price = forms.CharField()
     
-class EditCafe(forms.Form):
+    class Meta:
+        model = Cafe
+        fields = '__all__'
+    
+class EditCafe(forms.ModelForm):
     name = forms.CharField()
     map_url = forms.CharField()
     img_url = forms.CharField()
@@ -40,3 +45,8 @@ class EditCafe(forms.Form):
     has_sockets = forms.BooleanField()
     can_take_calls = forms.BooleanField()
     coffee_price = forms.CharField()
+    
+    class Meta:
+        model = Cafe
+        fields = '__all__'
+    

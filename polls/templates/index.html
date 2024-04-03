@@ -146,12 +146,11 @@
                 <div class="col-md-6">
                   <h2 class="text-body-emphasis">Location</h2>
                   <ul class="list-unstyled ps-0">
-                    <li>
-                      <a class="icon-link mb-1" href="{% url 'google_m' %}?cafe_id={{ cafe.id }}">
-                        <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
-                        {{cafe.name}} Map location
-                      </a>
-                    </li>
+                    <div id="map">
+
+                      <iframe src="{{ cafe.map_url }}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  
+                    </div>
                   </ul>
                 </div>
               </div>

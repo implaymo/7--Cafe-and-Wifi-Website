@@ -40,10 +40,10 @@ class EditCafe(forms.ModelForm):
     img_url = forms.CharField()
     location = forms.CharField()
     seats = forms.CharField()
-    has_toilet = forms.BooleanField()
-    has_wifi = forms.BooleanField()
-    has_sockets = forms.BooleanField()
-    can_take_calls = forms.BooleanField()
+    has_toilet = forms.BooleanField(required=False)
+    has_wifi = forms.BooleanField(required=False)
+    has_sockets = forms.BooleanField(required=False)
+    can_take_calls = forms.BooleanField(required=False)
     coffee_price = forms.CharField()
     
     class Meta:

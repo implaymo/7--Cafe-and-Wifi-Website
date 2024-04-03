@@ -11,4 +11,5 @@ urlpatterns = [
     path("add_new_cafe/", views.add_new_cafe, name="add_new_cafe"),
     path("edit_cafe_selected/", views.edit_cafe_selected, name="edit_cafe_selected"),
     path("delete_cafe/", views.delete_cafe, name="delete_cafe"),
+    path("google_m/", views.google_m, name="google_m"),
 ]

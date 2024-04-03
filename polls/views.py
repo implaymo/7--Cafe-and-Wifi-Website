@@ -78,8 +78,7 @@ def edit_cafe_selected(request):
 def delete_cafe(request):
     if request.GET.get('cafe_id'):
         cafe_id = request.GET.get('cafe_id')
-        print(f"CAFE {cafe_id}")
-        cafe = cafe = get_object_or_404(Cafe, id=cafe_id)
+        cafe = get_object_or_404(Cafe, id=cafe_id)
         cafe.delete()
         return redirect("index")
     else:
@@ -89,4 +88,9 @@ def delete_cafe(request):
         
     return render(request, "index.html", {"cafe_id": cafe_id})
 
-    
+def google_m(request):
+    if request.GET.get('cafe_id') or request.POST.get('cafe_id'):
+        cafe_id = request.GET.get('cafe_id')
+        cafe = get_object_or_404(Cafe, id=cafe_id)
+        return render(request, 'google_maps.html', {'cafe': cafe})
+

@@ -133,7 +133,7 @@
                     {% endif %}
                     </li>
                     <li>
-                        <p class="icon-link mb-1">▪️ Coffee price: {{ cafe.coffee_price }}$</p>
+                        <p class="icon-link mb-1">▪️ Coffee price: {{ cafe.coffee_price }}</p>
                         </p>
                     </li>
                     <li>
@@ -147,7 +147,7 @@
                   <h2 class="text-body-emphasis">Location</h2>
                   <ul class="list-unstyled ps-0">
                     <li>
-                      <a class="icon-link mb-1" href="{{ cafe.map_url}}">
+                      <a class="icon-link mb-1" href="{% url 'google_m' %}?cafe_id={{ cafe.id }}">
                         <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-circle"></use></svg>
                         {{cafe.name}} Map location
                       </a>
@@ -178,7 +178,6 @@
               <a href="{% url 'edit_cafe_selected' %}?cafe_id={{ cafe.id }}" class="nav-link px-2"><button type="button" class="btn btn-sm btn-info">Edit</button></a>
               <a href="{% url 'delete_cafe' %}?cafe_id={{ cafe.id }}" class="nav-link px-2"><button type="button" class="btn btn-sm btn-danger">Delete</button></a>
             </div>            
-            
             {% endif %}
             {% endfor %}
         </div>
